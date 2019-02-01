@@ -14,26 +14,36 @@ exports.config = {
       restart: false,                     // speed up tests by not restarting the browser between tests
       keepBrowserState: false,            // usually better to NOT keep browser state to keep tests independent
       keepCookies: false,                 // usually better to NOT keep cookies between test runs
-      windowSize: '1900x2048',             // set browser window size to desktop
+      windowSize: '1900x2048',            // set browser window size to desktop
       
       chrome: {
         devtools: false,
         timeout: 0,
-        args: [
+        args: [                           // Chrome optimizations on Linux and headless mode
           '--disable-gpu',
           '--disable-dev-shm-usage',
           '--disable-setuid-sandbox',
           '--no-sandbox'
         ]
       }
+    },
+    
+    REST: {},                            // Enable calling REST APIs
+
+    BifrostHelper: {                     // Reporting helper
+      require: 'bifrost-io/codeceptjs/dashboard_helper.js'
     }
   },
-  include: {},                             // for page objects etc. - nothing to to currently
-  multiple: {
+
+  include: {},                           // for page objects etc. - nothing to to currently
+
+  multiple: {                            // config for parallel test execution
     parallel: {
-      chunks: 4
+      chunks: 4                          // number of parallel browser instances  
     }
   },
+
   bootstrap: null,                        // for running additional code before test run starts
+  
   mocha: {}
 }
