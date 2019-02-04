@@ -40,7 +40,9 @@ exports.config = {
   },
 
   include: {                             // for page objects etc. - nothing to to currently
-    Todos02Page: `./${TestBaseDirectory}/step_02/pages/todos.page.js`
+    Todos02Page: `./${TestBaseDirectory}/step_02/pages/todos.page.js`,
+ 
+    Todos03Page: `./${TestBaseDirectory}/step_03/pages/todos.page.js`
   },                           
 
   multiple: {                            // config for parallel test execution
