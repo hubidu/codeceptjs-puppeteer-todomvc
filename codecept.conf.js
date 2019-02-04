@@ -1,6 +1,10 @@
+const path = require('path')
+
+const TestBaseDirectory = 'todo-mvc-app'
+
 exports.config = {
   name: 'codeceptjs-todomvc',
-  tests: './**/*.test.js',                // look for tests in all subfolders
+  tests: path.join('.', TestBaseDirectory, '**', '*.test.js'),                // look for tests in all subfolders
   output: '__out',                        // set output directory for screenshots, reports ...
   helpers: {
     Puppeteer: {
@@ -35,7 +39,9 @@ exports.config = {
     }
   },
 
-  include: {},                           // for page objects etc. - nothing to to currently
+  include: {                             // for page objects etc. - nothing to to currently
+    Todos02Page: `./${TestBaseDirectory}/step_02/pages/todos.page.js`
+  },                           
 
   multiple: {                            // config for parallel test execution
     parallel: {

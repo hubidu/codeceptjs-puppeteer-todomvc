@@ -1,4 +1,4 @@
-Feature.skip('Bugs')
+Feature('Bugs')
 /**
  * Given I have the following config with the Puppeteer helper
  * 
@@ -17,7 +17,7 @@ Feature.skip('Bugs')
  *   at __puppeteer_evaluation_script__:1:1
  * 
  */
-Scenario('Throw error before interacting with the browser', (I) => {
+Scenario.skip('Throw error before interacting with the browser', (I) => {
   throw new Error('Boom')
 })
   
