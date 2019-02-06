@@ -74,6 +74,6 @@ Scenario('Clear completed todos', async (I, Todos04Page) => {
     Todos04Page.clearCompleted()
     Todos04Page.seeNumberOfTodos(0)
   
-    I.saveScreenshot('mark-all-todos-as-completed.png')
+    I.saveScreenshot('clear-completed-todos.png')
 })
 
