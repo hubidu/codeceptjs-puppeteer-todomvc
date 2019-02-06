@@ -56,12 +56,23 @@ Scenario('Text input should be trimmed', async (I, Todos03Page) => {
 
 
 Scenario('New todos should be added to the bottom of the list', async (I, Todos03Page) => {
-  throw new Error('Implement this test')
+  I.say('Given I added some todos')
+  Todos03Page.enterTodo('first')
+  Todos03Page.enterTodo('second')
+  Todos03Page.enterTodo('last')
+
+  I.say('When I look at my todo list')
+  I.say('Then I see the todos in the order in which I added them')
+  await Todos03Page.seeNthTodoEquals(1, 'first')
+  await Todos03Page.seeNthTodoEquals(2, 'second')
+  await Todos03Page.seeNthTodoEquals(3, 'last')
 })
 
 
 Scenario('Footer should be visible when adding TODOs', async (I, Todos03Page) => {
-  throw new Error('Implement this test')
+  Todos03Page.seeFooter()
+  Todos03Page.enterTodo('first')
+  Todos03Page.seeFooter()
 })
 
 

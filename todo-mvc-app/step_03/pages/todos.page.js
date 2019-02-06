@@ -31,4 +31,8 @@ module.exports = new class TodoPage {
         assert(todos[nthTodo - 1] === todo, `Expected "${todo}" but got "${todos[nthTodo - 1]}"`)
         return todos
     }
+
+    seeFooter() {
+        I.seeElement('footer.info')
+    }
 }
