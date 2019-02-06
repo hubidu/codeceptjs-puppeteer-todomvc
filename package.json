@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test:reports": "codeceptjs run --reporter mocha-junit-reporter"
   },
   "keywords": [],
   "author": "",
@@ -12,6 +12,7 @@
   "dependencies": {
     "bifrost-io": "^0.6.11",
     "codeceptjs": "^2.0.4",
+    "mocha-junit-reporter": "^1.18.0",
     "puppeteer": "^1.12.1"
   }
 }

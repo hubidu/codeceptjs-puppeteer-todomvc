@@ -55,5 +55,16 @@ exports.config = {
 
   bootstrap: null,                        // for running additional code before test run starts
   
-  mocha: {}
+  mocha: {                                // configure test reports
+    reporterOptions: {
+      mochaFile: "__out/junit.xml",       // enable junit xml reports
+      'codeceptjs-cli-reporter': {
+      stdout: "-",
+        options: {
+          verbose: true,
+          steps: true,
+        }
+      },    
+    }
+  }
 }
