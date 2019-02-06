@@ -36,6 +36,10 @@ exports.config = {
 
     BifrostHelper: {                     // Reporting helper
       require: 'bifrost-io/codeceptjs/dashboard_helper.js'
+    },
+
+    Mochawesome: {
+      uniqueScreenshotNames: 'true'
     }
   },
 
@@ -57,14 +61,22 @@ exports.config = {
   
   mocha: {                                // configure test reports
     reporterOptions: {
-      mochaFile: "__out/junit.xml",       // enable junit xml reports
+      reportDir: 'reports',
+      mochaFile: 'reports/junit.xml',       // enable junit xml reports
       'codeceptjs-cli-reporter': {
-      stdout: "-",
+      stdout: '-',
         options: {
           verbose: true,
           steps: true,
         }
       },    
+    },
+    mochawesome: {
+      stdout: 'reports/console.log',
+      options: {
+        reportDir: 'reports',
+        reportFilename: 'report'
+      }
     }
   }
 }
