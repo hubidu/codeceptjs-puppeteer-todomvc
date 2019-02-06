@@ -18,7 +18,7 @@ exports.config = {
       restart: false,                     // speed up tests by not restarting the browser between tests
       keepBrowserState: false,            // usually better to NOT keep browser state to keep tests independent
       keepCookies: false,                 // usually better to NOT keep cookies between test runs
-      windowSize: '1900x2048',            // set browser window size to desktop
+      // windowSize: '2100x2048',            // set browser window size to desktop
       
       chrome: {
         devtools: false,
@@ -42,7 +42,9 @@ exports.config = {
   include: {                             // for page objects etc. - nothing to to currently
     Todos02Page: `./${TestBaseDirectory}/step_02/pages/todos.page.js`,
  
-    Todos03Page: `./${TestBaseDirectory}/step_03/pages/todos.page.js`
+    Todos03Page: `./${TestBaseDirectory}/step_03/pages/todos.page.js`,
+
+    Todos04Page: `./${TestBaseDirectory}/step_04/pages/todos.page.js`
   },                           
 
   multiple: {                            // config for parallel test execution
