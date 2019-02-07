@@ -40,6 +40,10 @@ exports.config = {
 
     Mochawesome: {
       uniqueScreenshotNames: 'true'
+    },
+
+    CustomHelper: {
+      require: './todo-mvc-app/step_05/helpers/custom.helper.js'
     }
   },
 
@@ -48,7 +52,9 @@ exports.config = {
  
     Todos03Page: `./${TestBaseDirectory}/step_03/pages/todos.page.js`,
 
-    Todos04Page: `./${TestBaseDirectory}/step_04/pages/todos.page.js`
+    Todos04Page: `./${TestBaseDirectory}/step_04/pages/todos.page.js`,
+
+    Todos05Page: `./${TestBaseDirectory}/step_05/pages/todos.page.js`
   },                           
 
   multiple: {                            // config for parallel test execution
@@ -57,12 +63,12 @@ exports.config = {
     }
   },
 
-  bootstrap: null,                        // for running additional code before test run starts
+  bootstrap: null,                       // for running additional code before test run starts
   
-  mocha: {                                // configure test reports
+  mocha: {                               // configure test reports
     reporterOptions: {
       reportDir: 'reports',
-      mochaFile: 'reports/junit.xml',       // enable junit xml reports
+      mochaFile: 'reports/junit.xml',    // enable junit xml reports
       'codeceptjs-cli-reporter': {
       stdout: '-',
         options: {
