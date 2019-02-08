@@ -54,7 +54,9 @@ exports.config = {
 
     Todos04Page: `./${TestBaseDirectory}/step_04/pages/todos.page.js`,
 
-    Todos05Page: `./${TestBaseDirectory}/step_05/pages/todos.page.js`
+    Todos05Page: `./${TestBaseDirectory}/step_05/pages/todos.page.js`,
+
+    Todos06Page: `./${TestBaseDirectory}/step_06/pages/todos.page.js`
   },                           
 
   multiple: {                            // config for parallel test execution
