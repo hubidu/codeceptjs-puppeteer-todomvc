@@ -70,8 +70,11 @@ Scenario('New todos should be added to the bottom of the list', async (I, Todos0
 
 
 Scenario('Footer should be visible when adding TODOs', async (I, Todos06Page) => {
+  I.say('Given I am adding todos')
   Todos06Page.seeFooter()
+  I.say('When I add a todo')
   Todos06Page.enterTodo('first')
+  I.say('Then I always see the footer')
   Todos06Page.seeFooter()
 })
 
