@@ -51,10 +51,12 @@ Scenario('Text input should be trimmed', async (I, Todos03Page) => {
   Todos03Page.enterTodo('       Todo with lots of whitespace around       ')
 
   I.say('Then I see the trimmed text of the todo in the list')
-  await Todos03Page.seeNthTodoEquals(1, 'Todo with lots of whitespace around')
+  Todos03Page.seeNthTodoEquals(1, 'Todo with lots of whitespace around')
 })
 
-
+/**
+ * Happy Path
+ */
 Scenario('New todos should be added to the bottom of the list', async (I, Todos03Page) => {
   I.say('Given I added some todos')
   Todos03Page.enterTodo('first')
@@ -63,12 +65,14 @@ Scenario('New todos should be added to the bottom of the list', async (I, Todos0
 
   I.say('When I look at my todo list')
   I.say('Then I see the todos in the order in which I added them')
-  await Todos03Page.seeNthTodoEquals(1, 'first')
-  await Todos03Page.seeNthTodoEquals(2, 'second')
-  await Todos03Page.seeNthTodoEquals(3, 'last')
+  Todos03Page.seeNthTodoEquals(1, 'first')
+  Todos03Page.seeNthTodoEquals(2, 'second')
+  Todos03Page.seeNthTodoEquals(3, 'last')
 })
 
-
+/**
+ * Edge Case
+ */
 Scenario('Footer should be visible when adding TODOs', async (I, Todos03Page) => {
   Todos03Page.seeFooter()
   Todos03Page.enterTodo('first')

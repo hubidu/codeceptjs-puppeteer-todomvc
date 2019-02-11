@@ -22,14 +22,18 @@ module.exports = new class TodoPage {
         I.seeInField('.new-todo', '')
     }
 
-    async seeNthTodoEquals(nthTodo, todo) {
-        let todos = await I.grabTextFrom('.todo-list li')
-        if (typeof todos === 'string') {
-            todos = [todos]
-        }
+    // async seeNthTodoEquals(nthTodo, todo) {
+    //     let todos = await I.grabTextFrom('.todo-list li')
+    //     if (typeof todos === 'string') {
+    //         todos = [todos]
+    //     }
 
-        assert(todos[nthTodo - 1] === todo, `Expected "${todo}" but got "${todos[nthTodo - 1]}"`)
-        return todos
+    //     assert(todos[nthTodo - 1] === todo, `Expected "${todo}" but got "${todos[nthTodo - 1]}"`)
+    //     return todos
+    // }
+
+    seeNthTodoEquals(nthTodo, todo) {
+        I.seeTextEquals(todo, `.todo-list li:nth-child(${nthTodo})`)
     }
 
     seeFooter() {
