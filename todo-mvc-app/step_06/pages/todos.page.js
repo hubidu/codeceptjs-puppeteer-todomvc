@@ -2,11 +2,10 @@ const assert = require('assert')
 
 const I = actor();
 
-const nthTodoCheckbox = nth => ({ xpath: `(//*[contains(@class,"todo-list")]/li/div/input)[${nth}]`})
-const nthTTodoDeleteButton = nth => ({ xpath: `(//*[contains(@class,"todo-list")]/li/div/button)[${nth}]`})
-const nthTodoEditField = nth => ({ xpath: `(//*[contains(@class,"todo-list")]/li/form/input)[${nth}]`})
-// const nthTodoItem = nth => ({ xpath: `(//*[contains(@class,"todo-list")]/li)[${nth}]`})
-const nthTodoItemCss = nth => `.todo-list li:nth-child(${nth})`
+const nthTodoCheckbox = nth => `.todo-list li:nth-child(${nth}) > div > input` // ({ xpath: `(//*[contains(@class,"todo-list")]/li/div/input)[${nth}]`})
+const nthTTodoDeleteButton = nth => `.todo-list li:nth-child(${nth}) > div > button` // ({ xpath: `(//*[contains(@class,"todo-list")]/li/div/button)[${nth}]`})
+const nthTodoEditField = nth => `.todo-list li:nth-child(${nth}) > form > input` // ({ xpath: `(//*[contains(@class,"todo-list")]/li/form/input)[${nth}]`})
+const nthTodoItem = nth => `.todo-list li:nth-child(${nth})` // ({ xpath: `(//*[contains(@class,"todo-list")]/li)[${nth}]`})
 
 module.exports = new class TodoPage {
     goto() {
@@ -27,13 +26,13 @@ module.exports = new class TodoPage {
     }
 
     async markNthAsCompleted(nthTodo) {
-        const classNames = await I.grabAttributeFrom(nthTodoItemCss(nthTodo), 'class')
+        const classNames = await I.grabAttributeFrom(nthTodoItem(nthTodo), 'class')
         assert(classNames.indexOf('completed') < 0, 'Expected todo to be not already marked as completed')
         I.click(nthTodoCheckbox(nthTodo))
     }
 
     async unmarkNthAsCompleted(nthTodo) {
-        const classNames = await I.grabAttributeFrom(nthTodoItemCss(nthTodo), 'class')
+        const classNames = await I.grabAttributeFrom(nthTodoItem(nthTodo), 'class')
         assert(classNames.indexOf('completed') >= 0, 'Expected todo to be marked as completed')
         I.click(nthTodoCheckbox(nthTodo))
     }
@@ -59,14 +58,14 @@ module.exports = new class TodoPage {
     }
 
     editNthTodo(nthTodo, newTodoText) {
-        I.doubleClick(nthTodoItemCss(nthTodo))
+        I.doubleClick(nthTodoItem(nthTodo))
         I.fillField(nthTodoEditField(nthTodo), newTodoText)
         I.pressKey('Enter')
     }
 
     deleteNthTodo(nthTodo) {
         // Use a custom helper function to hover over an todo item
-        I.hover(nthTodoItemCss(nthTodo))
+        I.hover(nthTodoItem(nthTodo))
         I.click(nthTTodoDeleteButton(nthTodo))
     }
 
