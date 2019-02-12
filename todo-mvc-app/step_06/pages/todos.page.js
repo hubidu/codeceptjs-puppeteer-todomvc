@@ -11,6 +11,7 @@ module.exports = new class TodoPage {
     goto() {
         I.amOnPage('http://todomvc.com/examples/angularjs/#/')
         I.refreshPage()
+        I.executeScript(() => sessionStorage.clear())
         I.waitForVisible('.new-todo')    
     }
 
