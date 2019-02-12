@@ -36,6 +36,21 @@ Scenario('Create multiple todo items', async (I, Todos06Page) => {
 /**
  * Edge cases
  */
+
+const examples = new DataTable(['Todo Text', 'Result'])
+examples.add(['Todo with umlauts äöü', 'ok'])
+examples.add(['Very loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong TooooooooooooooooooooooooooooooooooooooooDooooooooooooooo', 'ok'])
+examples.add(['Todo with html code <script>alert("hello")</script>', 'ok'])
+
+Data(examples).
+Scenario('Todos containing weird characters', async (I, current, Todos06Page) => {
+  Todos06Page.enterTodo(current['Todo Text'])
+
+  if (current['Result'] === 'ok') {
+    Todos06Page.seeNthTodoEquals(1, current['Todo Text'])
+  }
+})
+
 Scenario('Text input field should be cleared after each item', async (I, Todos06Page) => {
   I.say('Given I have an empty todo list')
   I.say('When I enter a new todo')
