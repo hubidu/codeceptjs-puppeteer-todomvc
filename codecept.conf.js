@@ -34,9 +34,9 @@ exports.config = {
     
     REST: {},                            // Enable calling REST APIs
 
-    BifrostHelper: {                     // Reporting helper
-      require: 'bifrost-io/codeceptjs/dashboard_helper.js'
-    },
+    // BifrostHelper: {                     // Reporting helper (does not work with BDD)
+    //   require: 'bifrost-io/codeceptjs/dashboard_helper.js'
+    // },
 
     Mochawesome: {
       uniqueScreenshotNames: 'true'
@@ -56,8 +56,17 @@ exports.config = {
 
     Todos05Page: `./${TestBaseDirectory}/step_05/pages/todos.page.js`,
 
-    Todos06Page: `./${TestBaseDirectory}/step_06/pages/todos.page.js`
+    Todos06Page: `./${TestBaseDirectory}/step_06/pages/todos.page.js`,
+
+    TodosBddPage: `./${TestBaseDirectory}/bdd/pages/todos.page.js`
   },                           
+
+  gherkin: {                              // Use codeceptjs with gherkin
+    features: "./todo-mvc-app/bdd/features/*.feature",
+    steps: [
+      "./todo-mvc-app/bdd/step_definitions/create-todos.steps.js"
+    ]
+  },
 
   multiple: {                            // config for parallel test execution
     parallel: {
