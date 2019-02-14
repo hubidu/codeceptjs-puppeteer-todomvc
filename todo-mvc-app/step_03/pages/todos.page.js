@@ -9,6 +9,18 @@ module.exports = new class TodoPage {
         I.waitForVisible('.new-todo')    
     }
 
+    focusNewTodoField() {
+        I.click('.new-todo')
+    }
+
+    typeTodoAndEnter(todo) {
+        I.typeText('.new-todo', todo)
+        I.pressKey('Enter')        
+    }
+
+    /**
+     * Alternatively do all in one
+     */
     enterTodo(todo) {
         I.fillField('.new-todo', todo)
         I.pressKey('Enter')        

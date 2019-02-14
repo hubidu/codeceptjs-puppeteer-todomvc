@@ -15,7 +15,7 @@ class CustomHelper extends Helper {
         await client.page.hover(toString(selector))
     }
 
-    async typeText(text) {
+    async typeText(selector, text) {
         let client = this.helpers['Puppeteer'];
 
         await client.page.keyboard.type(text)
