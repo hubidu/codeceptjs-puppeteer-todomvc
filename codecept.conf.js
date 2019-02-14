@@ -34,16 +34,16 @@ exports.config = {
     
     REST: {},                            // Enable calling REST APIs
 
-    // BifrostHelper: {                     // Reporting helper (does not work with BDD)
-    //   require: 'bifrost-io/codeceptjs/dashboard_helper.js'
-    // },
+    BifrostHelper: {                     // Reporting helper (does not work with BDD)
+      require: 'bifrost-io/codeceptjs/dashboard_helper.js'
+    },
 
     Mochawesome: {
       uniqueScreenshotNames: 'true'
     },
 
     CustomHelper: {
-      require: './todo-mvc-app/step_05/helpers/custom.helper.js'
+      require: './todo-mvc-app/step_06/helpers/custom.helper.js'
     }
   },
 
