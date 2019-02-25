@@ -19,18 +19,6 @@ module.exports = new class TodoPage {
         I.pressKey('Enter')        
     }
 
-    async markNthAsCompleted(nthTodo) {
-        const classNames = await I.grabAttributeFrom(nthTodoItem(nthTodo), 'class')
-        assert(classNames.indexOf('completed') < 0, 'Expected todo to be not already marked as completed')
-        I.click(nthTodoCheckbox(nthTodo))
-    }
-
-    async unmarkNthAsCompleted(nthTodo) {
-        const classNames = await I.grabAttributeFrom(nthTodoItem(nthTodo), 'class')
-        assert(classNames.indexOf('completed') >= 0, 'Expected todo to be marked as completed')
-        I.click(nthTodoCheckbox(nthTodo))
-    }
-
     markAllAsCompleted() {
         I.click('label[for="toggle-all"')
     }
@@ -51,16 +39,6 @@ module.exports = new class TodoPage {
         I.click(locate('.filters li').at(3))
     }
 
-    async seeNthTodoEquals(nthTodo, todo) {
-        let todos = await I.grabTextFrom('.todo-list li')
-        if (typeof todos === 'string') {
-            todos = [todos]
-        }
-
-        assert(todos[nthTodo - 1] === todo, `Expected "${todo}" but got "${todos[nthTodo - 1]}"`)
-        return todos
-    }
-
     seeNumberOfTodos(numberOfTodos) {
         I.seeNumberOfVisibleElements('.todo-list li', numberOfTodos)
     }
@@ -77,12 +55,12 @@ module.exports = new class TodoPage {
 
     markNthXpathAsCompleted(nthTodo) {
         I.waitForVisible(nthXpathTodoItemNotCompleted(nthTodo))
-        I.click(nthXpathTodoItem(nthTodo))
+        I.click(nthXpathTodoItemNotCompleted(nthTodo))
     }
 
     unmarkNthXpathAsCompleted(nthTodo) {
         I.waitForVisible(nthXpathTodoItemCompleted(nthTodo))
-        I.click(nthXpathTodoItem(nthTodo))
+        I.click(nthXpathTodoItemCompleted(nthTodo))
     }
 
     seeNthXpathTodoEquals(nthTodo, todo) {
