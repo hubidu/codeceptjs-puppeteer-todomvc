@@ -2,8 +2,6 @@ const assert = require('assert')
 
 const I = actor();
 
-const nthTodoCheckbox = nth => ({ xpath: `(//*[contains(@class,"todo-list")]/li/div/input)[${nth}]`})
-const nthTodoItem = nth => ({ xpath: `(//*[contains(@class,"todo-list")]/li)[${nth}]`})
 const nthXpathTodoItemNotCompleted = nth => ({ xpath: `//*[contains(@class,"todo-list")]/li[${nth}][not(@class = "completed")]/div/input` })
 const nthXpathTodoItemCompleted = nth =>    ({ xpath: `//*[contains(@class,"todo-list")]/li[${nth}][@class = "completed"]/div/input` })
 

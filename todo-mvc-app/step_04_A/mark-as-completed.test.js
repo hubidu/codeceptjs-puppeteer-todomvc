@@ -1,4 +1,4 @@
-Feature('@only Mark as completed/not completed')
+Feature('Mark as completed/not completed')
 
 Before(async (I, Todos04_APage) => {
     Todos04_APage.goto()
