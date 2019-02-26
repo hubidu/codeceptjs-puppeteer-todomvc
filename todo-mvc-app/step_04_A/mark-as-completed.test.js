@@ -35,9 +35,9 @@ Scenario('Unmark completed todos', async (I, Todos04_APage) => {
   
     I.say('And I mark the first one as completed')
     Todos04_APage.markNthXpathAsCompleted(1)
-    Todos04_APage.unmarkNthXpathAsCompleted(1)
-  
+      
     I.say('When I unmark the completed todo item')
+    Todos04_APage.unmarkNthXpathAsCompleted(1)
 
     I.say('Then I see that 3 todos are still active')
     Todos04_APage.filterActive()

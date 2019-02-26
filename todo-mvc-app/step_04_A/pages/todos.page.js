@@ -4,12 +4,12 @@ const I = actor();
 
 const nthTodoCheckbox = nth => ({ xpath: `(//*[contains(@class,"todo-list")]/li/div/input)[${nth}]`})
 const nthTodoItem = nth => ({ xpath: `(//*[contains(@class,"todo-list")]/li)[${nth}]`})
-const nthXpathTodoItemNotCompleted = nth => ({ xpath: `(//*[contains(@class,"todo-list")])/li[${nth}][not(@class = "completed")]`})
-const nthXpathTodoItemCompleted = nth => ({ xpath: `(//*[contains(@class,"todo-list")])/li[${nth}][@class = "completed"]`})
+const nthXpathTodoItemNotCompleted = nth => ({ xpath: `//*[contains(@class,"todo-list")]/li[${nth}][not(@class = "completed")]/div/input` })
+const nthXpathTodoItemCompleted = nth =>    ({ xpath: `//*[contains(@class,"todo-list")]/li[${nth}][@class = "completed"]/div/input` })
 
 module.exports = new class TodoPage {
     goto() {
-        I.amOnPage('http://todomvc.com/examples/angularjs/#/')
+        I.amOnPage('http://todomvc.com/examples/react/#/')
         I.refreshPage()
         I.waitForVisible('.new-todo')    
     }
