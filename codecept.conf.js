@@ -54,7 +54,7 @@ exports.config = {
 
     Todos04Page: `./${TestBaseDirectory}/step_04/pages/todos.page.js`,
 
-    Todos04_APage: `./${TestBaseDirectory}/step_04_A/pages/todos.page.js`,
+    // Todos04Page: `./${TestBaseDirectory}/step_04/pages/todos_alt.page.js`,
 
     Todos05Page: `./${TestBaseDirectory}/step_05/pages/todos.page.js`,
 
