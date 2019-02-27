@@ -38,15 +38,17 @@ Scenario('Create multiple todo items', async (I, Todos06Page) => {
  */
 
 const examples = new DataTable(['Todo Text', 'Result'])
-examples.add(['Todo with umlauts äöü', 'ok'])
-examples.add(['Very loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong TooooooooooooooooooooooooooooooooooooooooDooooooooooooooo', 'ok'])
-examples.add(['Todo with html code <script>alert("hello")</script>', 'ok'])
+examples.add(['Todo with umlauts äöü', 'is in list'])
+examples.add(['Very loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong TooooooooooooooooooooooooooooooooooooooooDooooooooooooooo', 'is in list'])
+examples.add(['Todo with html code <script>alert("hello")</script>', 'is in list'])
 
 Data(examples).
 Scenario('Todos containing weird characters', async (I, current, Todos06Page) => {
+  I.say('When I enter {Todo Text}')
   Todos06Page.enterTodo(current['Todo Text'])
 
-  if (current['Result'] === 'ok') {
+  I.say('Then I see {Result}')
+  if (current['Result'] === 'is in list') {
     Todos06Page.seeNthTodoEquals(1, current['Todo Text'])
   }
 })
