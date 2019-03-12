@@ -1,5 +1,3 @@
-const I = actor()
-
 const TodosPage = require('../pages/todos.page')
 
 /**
