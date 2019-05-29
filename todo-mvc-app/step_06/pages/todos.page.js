@@ -12,8 +12,6 @@ const nthTTodoDeleteButton = nth => locate('div > button').inside(`.todo-list li
 const nthTodoEditField = nth => locate('form > input').inside(`.todo-list li:nth-child(${nth})`) 
 const nthTodoItem = nth => locate('.todo-list li').at(nth).as(`${nth} todo item`)
 
-
-
 module.exports = {
     goto() {
         I.amOnPage('http://todomvc.com/examples/angularjs/#/')
