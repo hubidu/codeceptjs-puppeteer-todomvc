@@ -2,21 +2,21 @@ const assert = require('assert')
 
 const I = actor();
 
-module.exports = new class TodoPage {
+module.exports = {
     goto() {
         I.amOnPage('http://todomvc.com/examples/angularjs/#/')
         I.refreshPage()
         I.waitForVisible('.new-todo')    
-    }
+    },
 
     focusNewTodoField() {
         I.click('.new-todo')
-    }
+    },
 
     typeTodoAndEnter(todo) {
-        I.typeText('.new-todo', todo)
+        I.typeText(todo)
         I.pressKey('Enter')        
-    }
+    },
 
     /**
      * Alternatively do all in one
@@ -24,15 +24,15 @@ module.exports = new class TodoPage {
     enterTodo(todo) {
         I.fillField('.new-todo', todo)
         I.pressKey('Enter')        
-    }
+    },
 
     seeNumberOfTodos(numberOfTodos) {
         I.seeNumberOfVisibleElements('.todo-list li', numberOfTodos)
-    }
+    },
     
     seeEmptyTodoInput() {
         I.seeInField('.new-todo', '')
-    }
+    },
 
     // async seeNthTodoEquals(nthTodo, todo) {
     //     let todos = await I.grabTextFrom('.todo-list li')
@@ -46,7 +46,7 @@ module.exports = new class TodoPage {
 
     seeNthTodoEquals(nthTodo, todo) {
         I.seeTextEquals(todo, `.todo-list li:nth-child(${nthTodo})`)
-    }
+    },
 
     seeFooter() {
         I.seeElement('footer.info')

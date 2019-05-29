@@ -38,12 +38,16 @@ exports.config = {
       require: 'bifrost-io/codeceptjs/dashboard_helper.js'
     },
 
-    Mochawesome: {
-      uniqueScreenshotNames: 'true'
-    },
+    // Mochawesome: {
+    //   uniqueScreenshotNames: 'true'
+    // },
 
     CustomHelper: {
       require: './todo-mvc-app/step_06/helpers/custom.helper.js'
+    },
+
+    MockHelper: {
+      require: './todo-mvc-app/test/mock.helper.js'
     }
   },
 
@@ -76,25 +80,18 @@ exports.config = {
   },
 
   bootstrap: null,                       // for running additional code before test run starts
-  
-  mocha: {                               // configure test reports
-    reporterOptions: {
-      reportDir: 'reports',
-      mochaFile: 'reports/junit.xml',    // enable junit xml reports
-      'codeceptjs-cli-reporter': {
-      stdout: '-',
-        options: {
-          verbose: true,
-          steps: true,
-        }
-      },    
-    },
-    mochawesome: {
-      stdout: 'reports/console.log',
-      options: {
-        reportDir: 'reports',
-        reportFilename: 'report'
-      }
+
+  plugins: {
+    allure: {},
+    stepByStepReport: {
+      enabled: true,
+      deleteSuccessful: true,
+      animateSlides: false,
+      fullPageScreenshots: true,
+      screenshotsForAllureReport: true,
+      ignoreSteps: ['grab*', 'wait*', 'fillField*']
     }
-  }
+  },
+
+  mocha: {}
 }
