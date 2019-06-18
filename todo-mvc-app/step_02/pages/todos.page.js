@@ -8,7 +8,7 @@ module.exports = {
     },
 
     enterTodo(todo) {
-        I.fillField('.new-todo', 'foo')
+        I.fillField('.new-todo', todo)
         I.pressKey('Enter')        
     },
 

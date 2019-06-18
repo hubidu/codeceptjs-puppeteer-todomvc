@@ -11,8 +11,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bifrost-io": "^0.6.16",
-    "codeceptjs": "^2.1.3",
+    "bifrost-io": "^0.6.17",
+    "codeceptjs": "^2.1.4",
     "mocha-junit-reporter": "^1.22.0",
     "mocha-multi": "^1.1.0",
     "mochawesome": "^3.1.2",
