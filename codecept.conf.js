@@ -8,7 +8,7 @@ exports.config = {
   output: '__out',                        // set output directory for screenshots, reports ...
   helpers: {
     Puppeteer: {
-      url: 'http://localhost',            // irrelevant but required
+      url: 'http://localhost',            // better to set in test/page object, but cannot be empty
       show: true,                         // show browser window - helpful while developing tests
       fullPageScreenshots: true,          // screenshots are taken of the full page (not just the viewport)
       waitForNavigation: 'domcontentloaded',  // for single page apps: wait until there are almost no more ajax requests going on
@@ -18,7 +18,7 @@ exports.config = {
       restart: false,                     // speed up tests by not restarting the browser between tests
       keepBrowserState: false,            // usually better to NOT keep browser state to keep tests independent
       keepCookies: false,                 // usually better to NOT keep cookies between test runs
-      // windowSize: '2100x2048',            // set browser window size to desktop
+      windowSize: '1900x1028',            // set browser window size to desktop
       
       chrome: {
         devtools: false,
