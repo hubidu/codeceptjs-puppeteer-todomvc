@@ -10,10 +10,10 @@ Before(async (I, Todos05Page) => {
 
 Scenario('Edited todo is saved on blur', async (I, Todos05Page) => {
     I.say('Given I have some todos')
-  
+
     I.say('When I edit the first todo')
     await Todos05Page.editNthTodo(1, 'boom')
-  
+
     I.say('Then I see that the todo text has been changed')
     await Todos05Page.seeNthTodoEquals(1, 'boom')
 
@@ -28,4 +28,3 @@ Scenario('Delete todos', async (I, Todos05Page) => {
     I.say('Then the todo should disappear from the list')
     Todos05Page.seeNumberOfTodos(2)    
 })
-  

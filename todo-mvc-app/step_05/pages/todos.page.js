@@ -1,6 +1,6 @@
 const assert = require('assert')
 
-const I = actor();
+const I = actor()
 
 const nthTodoCheckbox = nth => ({ xpath: `(//*[contains(@class,"todo-list")]/li/div/input)[${nth}]`})
 const nthTTodoDeleteButton = nth => ({ xpath: `(//*[contains(@class,"todo-list")]/li/div/button)[${nth}]`})
@@ -12,12 +12,12 @@ module.exports = {
     goto() {
         I.amOnPage('http://todomvc.com/examples/angularjs/#/')
         I.refreshPage()
-        I.waitForVisible('.new-todo')    
+        I.waitForVisible('.new-todo')
     },
 
     enterTodo(todo) {
         I.fillField('.new-todo', todo)
-        I.pressKey('Enter')        
+        I.pressKey('Enter')
     },
 
     async markNthAsCompleted(nthTodo) {
