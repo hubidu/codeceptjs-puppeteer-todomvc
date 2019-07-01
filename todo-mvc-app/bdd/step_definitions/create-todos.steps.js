@@ -14,7 +14,6 @@ When(/I create a todo "foo"/, () => {
     TodosPage.enterTodo('foo')
 })
 
-
 When(/I create todos "foo", "bar" and "baz"/, () => {
     TodosPage.enterTodo('foo')
     TodosPage.enterTodo('bar')
