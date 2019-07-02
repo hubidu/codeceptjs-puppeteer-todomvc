@@ -1,4 +1,4 @@
-/// <reference path="./steps.d.ts" />
+/// <reference path="../../steps.d.ts" />
 Feature('Hello World')
 
 Scenario('Goto CHECK24', (I) => {
