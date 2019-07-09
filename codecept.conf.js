@@ -31,6 +31,13 @@ exports.config = {
                     '--window-size=1900,1028']
             }
         },
+        // TestCafe: {
+        //     url: 'http://localhost',
+        //     browser: 'ie',
+        //     show: true,
+        //     waitForTimeout: 10000,
+        //     getPageTimeout: 30000
+        // },
 
         REST: {}, // Enable calling REST APIs
 
