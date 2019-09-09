@@ -1,8 +1,8 @@
 Feature('Create Todos')
 
-// Before(async (I, Todos02Page) => {
-//     Todos02Page.goto()
-// })
+Before(async (I, Todos03Page) => {
+    Todos03Page.goto()
+})
 
 /**
  * Happy Path tests
