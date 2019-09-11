@@ -1,16 +1,11 @@
 const assert = require('assert')
 
-const I = actor();
+const I = actor()
 
-// const nthTodoCheckbox = nth => `.todo-list li:nth-child(${nth}) > div > input` // ({ xpath: `(//*[contains(@class,"todo-list")]/li/div/input)[${nth}]`})
-// const nthTTodoDeleteButton = nth => `.todo-list li:nth-child(${nth}) > div > button` // ({ xpath: `(//*[contains(@class,"todo-list")]/li/div/button)[${nth}]`})
-// const nthTodoEditField = nth => `.todo-list li:nth-child(${nth}) > form > input` // ({ xpath: `(//*[contains(@class,"todo-list")]/li/form/input)[${nth}]`})
-// const nthTodoItem = nth => `.todo-list li:nth-child(${nth})` // ({ xpath: `(//*[contains(@class,"todo-list")]/li)[${nth}]`})
-
-const nthTodoCheckbox = nth => locate('div > input').inside(`.todo-list li:nth-child(${nth})`) 
-const nthTTodoDeleteButton = nth => locate('div > button').inside(`.todo-list li:nth-child(${nth})`) 
-const nthTodoEditField = nth => locate('form > input').inside(`.todo-list li:nth-child(${nth})`) 
-const nthTodoItem = nth => locate('.todo-list li').at(nth).as(`${nth} todo item`)
+const nthTodoCheckbox = nth => locate('div > input').inside(`.todo-list li:nth-child(${nth})`).as(`${nth}. checkbox`)
+const nthTTodoDeleteButton = nth => locate('div > button').inside(`.todo-list li:nth-child(${nth})`).as(`${nth}. delete button`)
+const nthTodoEditField = nth => locate('form > input').inside(`.todo-list li:nth-child(${nth})`).as(`${nth}. todo input`)
+const nthTodoItem = nth => locate('.todo-list li').at(nth).as(`${nth}. todo item`).as(`${nth}. todo`)
 
 module.exports = {
     goto() {
@@ -22,13 +17,13 @@ module.exports = {
 
     enterTodo(todo) {
         I.fillField('.new-todo', todo)
-        I.pressKey('Enter')        
+        I.pressKey('Enter')
     },
 
     enterTodos(todoItems) {
         I.executeScript((todoItems) => {
             localStorage.setItem('todos-angularjs', JSON.stringify(todoItems));
-        }, todoItems)    
+        }, todoItems)
     },
 
     async markNthAsCompleted(nthTodo) {
@@ -71,7 +66,7 @@ module.exports = {
 
     deleteNthTodo(nthTodo) {
         // Use a custom helper function to hover over an todo item
-        I.hover(nthTodoItem(nthTodo))
+        I.hover(`.todo-list li:nth-child(${nthTodo})`)
         I.click(nthTTodoDeleteButton(nthTodo))
     },
 
@@ -92,7 +87,7 @@ module.exports = {
     seeNumberOfTodos(numberOfTodos) {
         I.seeNumberOfVisibleElements('.todo-list li', numberOfTodos)
     },
-    
+
     seeEmptyTodoInput() {
         I.seeInField('.new-todo', '')
     },

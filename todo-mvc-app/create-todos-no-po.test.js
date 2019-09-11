@@ -1,4 +1,4 @@
-Feature('Create Todos')
+Feature('Create Todos - without page object')
 
 Before(async (I) => {
     I.amOnPage('http://todomvc.com/examples/angularjs/#/')
@@ -6,7 +6,7 @@ Before(async (I) => {
     I.waitForVisible('.new-todo')
 })
 
-Scenario('Create a new todo item @step-01', async (I) => {
+Scenario('Create a new todo item (no page object) @smoke', async (I) => {
     I.say('Given I have an empty todo list')
 
     I.say('When I create a todo "foo"')
@@ -23,7 +23,7 @@ Scenario('Create a new todo item @step-01', async (I) => {
  * Note This test actually reflects better the actual feature
  * but again requires a custom helper method
  */
-Scenario('Create multiple todo items @step-01', async (I) => {
+Scenario('Create multiple todo items (no page object) @smoke', async (I) => {
     I.say('Given I have an empty todo list')
 
     I.say('When I focus the input field')
@@ -45,7 +45,7 @@ Scenario('Create multiple todo items @step-01', async (I) => {
     I.saveScreenshot('create-multiple-todo-items.png')
 })
 
-// Scenario('Create multiple todo items @step-01', async (I) => {
+// Scenario('Create multiple todo items @smoke', async (I) => {
 //   I.say('Given I have an empty todo list')
 
 //   I.say('When I create todos "foo", "bar" and "baz"')

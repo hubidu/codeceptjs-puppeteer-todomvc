@@ -37,26 +37,12 @@ exports.config = {
         // },
 
         CustomHelper: {
-            require: './todo-mvc-app/step_06/helpers/custom.helper.js'
-        },
-
-        MockHelper: {
-            require: './todo-mvc-app/test/mock.helper.js'
+            require: './todo-mvc-app/helpers/custom.helper.js'
         }
     },
 
     include: { // For page objects etc. - nothing to to currently
-        Todos02Page: `./${TestBaseDirectory}/step_02/pages/todos.page.js`,
-
-        Todos03Page: `./${TestBaseDirectory}/step_03/pages/todos.page.js`,
-
-        Todos04Page: `./${TestBaseDirectory}/step_04/pages/todos.page.js`,
-        // Todos04Page: `./${TestBaseDirectory}/step_04/pages/todos_alt.page.js`,
-
-        Todos05Page: `./${TestBaseDirectory}/step_05/pages/todos.page.js`,
-
-        Todos06Page: `./${TestBaseDirectory}/step_06/pages/todos.page.js`,
-
+        TodosPage: `./${TestBaseDirectory}/pages/todos.page.js`,
         TodosBddPage: `./${TestBaseDirectory}/bdd/pages/todos.page.js`
     },
 

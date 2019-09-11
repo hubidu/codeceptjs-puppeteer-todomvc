@@ -7,6 +7,8 @@
     "space": false,
     "semicolon": false,
     "globals": [
+      "Data",
+      "DataTable",
       "Feature",
       "Scenario",
       "Before",
