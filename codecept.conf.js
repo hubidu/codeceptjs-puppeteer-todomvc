@@ -5,7 +5,7 @@ const TestBaseDirectory = 'todo-mvc-app'
 exports.config = {
     name: 'codeceptjs-todomvc',
     tests: path.join('.', TestBaseDirectory, '**', '*.test.js'), // Look for tests in all subfolders
-    output: '__out', // Set output directory for screenshots, reports ...
+    output: 'output', // Set output directory for screenshots, reports ...
     helpers: {
 
         Puppeteer: {
@@ -28,13 +28,9 @@ exports.config = {
 
         REST: {}, // Enable calling REST APIs
 
-        // BifrostHelper: { // Reporting helper (does not work with BDD)
-        //     require: './node_modules/bifrost-io/codeceptjs/dashboard_helper.js'
-        // },
-
-        // Mochawesome: {
-        //   uniqueScreenshotNames: 'true'
-        // },
+        Mochawesome: {
+          uniqueScreenshotNames: 'true'
+        },
 
         CustomHelper: {
             require: './todo-mvc-app/helpers/custom.helper.js'
@@ -73,5 +69,46 @@ exports.config = {
     //     }
     // },
 
-    mocha: {}
+    // Enable various reporting options using multi-report
+    // In practice you should probably pick only one
+    mocha: {
+        reporterOptions: {
+            'codeceptjs-cli-reporter': {
+                stdout: '-',
+                options: {
+                    // "verbose": true,
+                    steps: true
+                }
+            },
+            mochawesome: {
+                stdout: './output/console.log',
+                options: {
+                    reportDir: './output',
+                    reportFilename: 'report',
+                    uniqueScreenshotNames: true
+                }
+            },
+            'mocha-junit-reporter': {
+                stdout: './output/console.log',
+                options: {
+                    mochaFile: './output/result.xml'
+                },
+                attachments: true // Add screenshot for a failed test
+            }
+        }
+    }
+
+    // JUnit only: npx codeceptjs run --reporter mocha-junit-reporter
+    // "mocha": {
+    //     "reporterOptions": {
+    //         "mochaFile": "output/junit.xml"
+    //     }
+    // }
+
+    // Mochawesome only: npx codeceptjs run --reporter mocha-multi
+    // "mocha": {
+    //     "reporterOptions": {
+    //         "reportDir": "output"
+    //     }
+    // }
 }

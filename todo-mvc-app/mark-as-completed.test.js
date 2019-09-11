@@ -33,9 +33,9 @@ Scenario('Unmark completed todos', async (I, TodosPage) => {
 
     I.say('And I mark the first one as completed')
     await TodosPage.markNthAsCompleted(1)
-    await TodosPage.unmarkNthAsCompleted(1)
 
     I.say('When I unmark the completed todo item')
+    await TodosPage.unmarkNthAsCompleted(1)
 
     I.say('Then I see that 3 todos are still active')
     TodosPage.filterActive()
@@ -58,7 +58,7 @@ Scenario('Mark all todos as completed', async (I, TodosPage) => {
 })
 
 Scenario('Clear completed todos', async (I, TodosPage) => {
-    I.say('Given I have some completed todos') 
+    I.say('Given I have some completed todos')
     TodosPage.markAllAsCompleted()
 
     I.say('When I clear all completed items')
